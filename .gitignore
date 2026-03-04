@@ -84,6 +84,3 @@ Thumbs.db
 # Data artifacts (Pipeline)
 # =========================
 pipeline/raw/
-pipeline/bronze/
-pipeline/silver/
-pipeline/gold/

@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: graphgames-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-graphgames}
+      POSTGRES_USER: ${POSTGRES_USER:-graphgames}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-graphgames}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-graphgames} -d ${POSTGRES_DB:-graphgames}"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pgdata:

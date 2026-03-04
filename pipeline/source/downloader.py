@@ -17,7 +17,7 @@ SAMPLE_FILE_NAME = "games_march2025_cleaned_sample.csv"
 class DownloadResult:
     raw_csv_path: Path
     used_fallback: bool
-    source: str  # "kaggle" | "sample" | "raw_cached"
+    source: str
 
 
 def data_layer_root() -> Path:
@@ -75,7 +75,6 @@ def load_env_file(dotenv_path: Path) -> None:
         key = key.strip()
         val = val.strip().strip('"').strip("'")
 
-        # Só seta se não existir (não sobrescreve env do sistema)
         os.environ.setdefault(key, val)
 
 

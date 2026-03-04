@@ -1,3 +1,5 @@
-kaggle
 pandas
 pyarrow
+sqlalchemy
+psycopg2-binary
+kaggle
